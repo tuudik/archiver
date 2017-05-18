@@ -59,7 +59,7 @@ function updateFolders($fileName) {
   } else {
     echo " * Check!", PHP_EOL;
   }
-
+  
   $split = explode("-", $fileName);
   $host = $split[0];
   $year = date('Y');
@@ -84,9 +84,9 @@ if($_FILES['fail']['error']==0 && isset($_FILES["fail"])) {
   $fileName = $_FILES["fail"]["name"];
 
   echo "Checking if logs compressed:", PHP_EOL;
-  if(checkMime($_FILES['fail']['tmp_name'])) {
+  if(checkMime($_FILES['fail']['tmp_name'])) { 
     echo " * Check!", PHP_EOL;
-  } else {
+  } else { 
     errorCall(9);
   }
 
