@@ -23,7 +23,7 @@ $phpFileUploadErrors = array(
 function archiveLog($fileName) {
   global $output_dir;
   echo "Archiving logs", PHP_EOL;
-  return move_uploaded_file($_FILES["fail"]["tmp_name"],$output_dir.$fileName);
+  return move_uploaded_file($_FILES['fail']['tmp_name'],$output_dir.$fileName);
 }
 
 function checkMime($tmpFileName) {
@@ -54,7 +54,7 @@ function updateFolders($fileName) {
 
   echo "Checking if directory is writable: ", PHP_EOL;
   if (!is_writable($output_dir)) {
-    echo "\Issue with directory: ".$output_dir, PHP_EOL;
+    echo "Issue with directory: ".$output_dir, PHP_EOL;
     errorCall(7);
   } else {
     echo " * Check!", PHP_EOL;
@@ -79,9 +79,9 @@ function updateFolders($fileName) {
 }
 
 echo "PHP errors with file uploads: ", PHP_EOL;
-if($_FILES['fail']['error']==0 && isset($_FILES["fail"])) {
+if($_FILES['fail']['error']==0 && isset($_FILES['fail'])) {
   echo " * Check!", PHP_EOL;
-  $fileName = $_FILES["fail"]["name"];
+  $fileName = $_FILES['fail']['name'];
 
   echo "Checking if logs compressed:", PHP_EOL;
   if(checkMime($_FILES['fail']['tmp_name'])) { 
