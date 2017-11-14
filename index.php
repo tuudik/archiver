@@ -29,7 +29,7 @@ function archiveLog($fileName) {
 function checkMime($tmpFileName) {
   $fileInfo = finfo_open( FILEINFO_MIME_TYPE );
   $mimeType = finfo_file( $fileInfo, $tmpFileName );
-  if($mimeType == ( "application/x-gzip" ) ) {
+  if($mimeType == ( "application/x-gzip" ) || $mimeType == ( "application/zip" )) {
     return true;
   }
   else {
@@ -61,7 +61,11 @@ function updateFolders($fileName) {
   }
   
   $split = explode("-", $fileName);
-  $host = $split[0];
+ if (empty($_GET["host"])){
+	$host = $split[0];
+	} else {
+	$host = $_GET["host"];
+	}
   $year = date('Y');
   $month = date('m');
   $output_dir = $output_dir.$host."/".$year."/".$month."/";
@@ -79,6 +83,9 @@ function updateFolders($fileName) {
 }
 
 echo "PHP errors with file uploads: ", PHP_EOL;
+if(empty($_FILES['fail'])){
+ $_FILES['fail']=$_FILES['file'];
+}
 if($_FILES['fail']['error']==0 && isset($_FILES['fail'])) {
   echo " * Check!", PHP_EOL;
   $fileName = $_FILES['fail']['name'];
