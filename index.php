@@ -1,5 +1,5 @@
 <?php
-/** This script is for HTTP logs archiving **/
+/** This script is for logs archiving over HTTP/HTTPS **/
 /** Created by Marko Valing / Tuudik       **/
 /** https://github.com/tuudik/archiver     **/
 
